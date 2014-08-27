@@ -65,6 +65,9 @@ static void lcd_set_contrast();
 #endif
 static void lcd_control_retract_menu();
 static void lcd_sdcard_menu();
+#ifdef DELTA_CALIBRATION_MENU
+static void lcd_delta_calibrate_menu();
+#endif // DELTA_CALIBRATION_MENU
 
 #ifdef DELTA_CALIBRATION_MENU
 static void lcd_delta_calibrate_menu();
@@ -345,6 +348,9 @@ static void lcd_main_menu()
         MENU_ITEM(submenu, MSG_DELTA_CALIBRATE, lcd_delta_calibrate_menu);
 #endif // DELTA_CALIBRATION_MENU
     }
+#ifdef DELTA_CALIBRATION_MENU
+    MENU_ITEM(submenu, MSG_DELTA_CALIBRATE, lcd_delta_calibrate_menu);
+#endif // DELTA_CALIBRATION_MENU
     MENU_ITEM(submenu, MSG_CONTROL, lcd_control_menu);
 #ifdef SDSUPPORT
     if (card.cardOK)
